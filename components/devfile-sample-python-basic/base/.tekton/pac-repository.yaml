@@ -1,0 +1,23 @@
+apiVersion: pipelinesascode.tekton.dev/v1alpha1
+kind: Repository
+metadata:
+  annotations:
+    build.appstudio.openshift.io/application: test-application
+    build.appstudio.openshift.io/build: "true"
+    build.appstudio.openshift.io/component: devfile-sample-python-basic
+    build.appstudio.openshift.io/type: build
+    build.appstudio.openshift.io/version: "0.1"
+    pipelines.appstudio.openshift.io/type: build
+  creationTimestamp: null
+  name: devfile-sample-python-basic
+  namespace: default
+spec:
+  git_provider:
+    secret:
+      key: gitlab.token
+      name: pipelines-as-code-secret
+    url: https://gitlab.com
+    webhook_secret:
+      key: https___gitlab.com_michkov2_devfile-sample-python-basic
+      name: pipelines-as-code-webhooks-secret
+  url: https://gitlab.com/michkov2/devfile-sample-python-basic
